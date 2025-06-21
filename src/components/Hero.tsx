@@ -10,7 +10,7 @@ export default function Hero() {
         transition={{ duration: 0.6 }}
         className="text-center"
       >
-        <h1 className="text-4xl font-bold mb-4">Hello, I'm John Doe</h1>
+        <h1 className="text-4xl font-bold mb-4">Hello, I'm Victor Rabelo</h1>
         <p className="text-xl">Senior Full-Stack Developer</p>
       </motion.div>
     </section>
