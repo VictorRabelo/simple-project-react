@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState } from "react";
+import { motion } from "framer-motion";
 
-/** Contact section with simple form */
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -11,46 +11,61 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Placeholder submit action
-    alert('Message sent!');
+    alert("Message sent!");
   };
 
   return (
-    <section id="contact" className="py-20 max-w-md mx-auto">
-      <h2 className="text-3xl font-semibold mb-4 text-center">Contact</h2>
-      <p className="text-center mb-4">Email: example@example.com</p>
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <motion.section
+      id="contact"
+      className="py-20 px-4 max-w-xl mx-auto"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.6 }}
+    >
+      <h2 className="text-3xl font-bold mb-2 text-center">Contact</h2>
+      <p className="text-center text-gray-600 dark:text-gray-400 mb-8">
+        Let's build something great together!
+      </p>
+
+      <form
+        action="https://formsubmit.co/dev.rabelo@gmail.com"
+        method="POST"
+        className="space-y-6">
         <input
-          className="w-full p-2 border rounded dark:border-gray-700"
+          className="w-full p-3 border rounded-lg bg-white dark:bg-gray-800 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
           type="text"
           name="name"
-          placeholder="Name"
+          placeholder="Your name"
           value={form.name}
           onChange={handleChange}
         />
         <input
-          className="w-full p-2 border rounded dark:border-gray-700"
+          className="w-full p-3 border rounded-lg bg-white dark:bg-gray-800 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder="Your email"
           value={form.email}
           onChange={handleChange}
         />
         <textarea
-          className="w-full p-2 border rounded dark:border-gray-700"
+          className="w-full p-3 border rounded-lg bg-white dark:bg-gray-800 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
           name="message"
-          placeholder="Message"
-          rows={4}
+          placeholder="Your message"
+          rows={5}
           value={form.message}
           onChange={handleChange}
         />
-        <button
-          type="submit"
-          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-        >
-          Send
-        </button>
+        <input type="hidden" name="_captcha" value="false" />
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Send Message
+          </button>
+        </div>
       </form>
-    </section>
+    </motion.section>
   );
 }

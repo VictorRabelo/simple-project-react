@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 /** Floating theme switcher to toggle light and dark modes */
 export default function ThemeSwitcher() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
@@ -14,7 +14,7 @@ export default function ThemeSwitcher() {
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
       aria-label="Toggle theme"
     >
-      {theme === 'light' ? '🌙' : '☀️'}
+      {theme === 'dark' ? '🌙' : '☀️'}
     </button>
   );
 }
